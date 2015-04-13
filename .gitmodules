@@ -1,0 +1,3 @@
+[submodule "twython"]
+	path = twython
+	url = git@github.com:ryanmcgrath/twython.git
