@@ -1,6 +1,3 @@
-[submodule "twython"]
-	path = twython
-	url = git@github.com:ryanmcgrath/twython.git
 [submodule "twitterstreamer/twython"]
 	path = twitterstreamer/twython
 	url = git@github.com:ryanmcgrath/twython.git
