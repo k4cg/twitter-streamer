@@ -15,7 +15,11 @@ def getAuthTokens():
     authPin = raw_input('pin: ')
 
     # get second auth
-    twitter = Twython(config.APP_KEY, config.APP_SECRET, firstAuth['oauth_token'], firstAuth['oauth_token_secret'])
+    twitter = Twython(
+      config.APP_KEY,
+      config.APP_SECRET,
+      firstAuth['oauth_token'],
+      firstAuth['oauth_token_secret'])
     secondAuth = twitter.get_authorized_tokens(authPin)
 
     # save tokens to a file
@@ -39,18 +43,27 @@ def getStream():
     f_authTokens.close()
 
     # verify credentials
-    twitter = Twython(config.APP_KEY, config.APP_SECRET, tokens['oauth_token'], tokens['oauth_token_secret'])
+    twitter = Twython(
+      config.APP_KEY,
+      config.APP_SECRET,
+      tokens['oauth_token'],
+      tokens['oauth_token_secret'])
     credentials = twitter.verify_credentials()
 
     # open stream
-    stream = MyTwythonStreamer(config.APP_KEY, config.APP_SECRET, tokens['oauth_token'], tokens['oauth_token_secret'])
+    stream = MyTwythonStreamer(
+      config.APP_KEY,
+      config.APP_SECRET,
+      tokens['oauth_token'],
+      tokens['oauth_token_secret'])
 
     return stream
+
 
 if __name__ == '__main__':
     # get new tokens?
     getNewTokens = raw_input('Get new tokens? [Y/n]: ')
-    if getNewTokens in ('y','Y'):
+    if getNewTokens in ('y', 'Y'):
         getAuthTokens()
 
     # get stream
