@@ -1,4 +1,6 @@
+import json
 from twython import TwythonStreamer
+import config
 
 
 class MyTwythonStreamer(TwythonStreamer):
@@ -9,6 +11,10 @@ class MyTwythonStreamer(TwythonStreamer):
 
     def on_success(self, data):
         if 'text' in data:
-            print data['text'].encode('utf-8')
+            json_string_data = json.dumps(data)
+            line = json_string_data + '\n'
+            f_trackedTweets = open(config.FILE_TRACKED_TWEETS, 'a')
+            f_trackedTweets.write(line)
+            f_trackedTweets.close()
             # Want to disconnect after the first result?
             # self.disconnect()

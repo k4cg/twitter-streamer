@@ -1,6 +1,7 @@
 # SLM
 *~
 .tmp_*
+.tracked_tweets.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

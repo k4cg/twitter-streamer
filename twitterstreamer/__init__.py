@@ -4,7 +4,7 @@ from MyTwythonStreamer import MyTwythonStreamer
 
 
 def getAuthTokens():
-    f_authTokens = open(config.TMP_TOKENS, 'w')
+    f_authTokens = open(config.FILE_TMP_TOKENS, 'w')
 
     # get first auth
     twitter = Twython(config.APP_KEY, config.APP_SECRET)
@@ -34,7 +34,7 @@ def getAuthTokens():
 
 def getStream():
     # Get auth tokens
-    f_authTokens = open(config.TMP_TOKENS, 'r')
+    f_authTokens = open(config.FILE_TMP_TOKENS, 'r')
     tokens = {}
     for line in f_authTokens:
         line = line.strip('\n')
