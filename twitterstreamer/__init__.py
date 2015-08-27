@@ -1,9 +1,10 @@
 from twython import Twython
 import config
+from MyTwythonStreamer import MyTwythonStreamer
 
 
 def getAuthTokens():
-    f_authTokens = open('.tmp_tokens', 'w')
+    f_authTokens = open(config.TMP_TOKENS, 'w')
 
     # get first auth
     twitter = Twython(config.APP_KEY, config.APP_SECRET)
@@ -25,3 +26,27 @@ def getAuthTokens():
     f_authTokens.close()
 
     return secondAuth
+
+
+def getStream():
+    # Get auth tokens
+    f_authTokens = open(config.TMP_TOKENS, 'r')
+    tokens = {}
+    for line in f_authTokens:
+        line = line.strip('\n')
+        key, value = line.split('\t', 1)
+        tokens[key] = value
+    f_authTokens.close()
+
+    # verify credentials
+    twitter = Twython(config.APP_KEY, config.APP_SECRET, tokens['oauth_token'], tokens['oauth_token_secret'])
+    credentials = twitter.verify_credentials()
+
+    # open stream
+    stream = MyTwythonStreamer(config.APP_KEY, config.APP_SECRET, tokens['oauth_token'], tokens['oauth_token_secret'])
+
+    return stream
+
+if __name__ == '__main__':
+  stream = getStream()
+  stream.statuses.filter(track='feierabend')
