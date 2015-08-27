@@ -48,5 +48,17 @@ def getStream():
     return stream
 
 if __name__ == '__main__':
-  stream = getStream()
-  stream.statuses.filter(track='feierabend')
+    # get new tokens?
+    getNewTokens = raw_input('Get new tokens? [Y/n]: ')
+    if getNewTokens in ('y','Y'):
+        getAuthTokens()
+
+    # get stream
+    stream = getStream()
+
+    # what filter?
+    track = raw_input('track [party]: ')
+    if track == '':
+        track = 'party'
+
+    stream.statuses.filter(track=track)
