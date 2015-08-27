@@ -1,3 +1,4 @@
+from getpass import getpass
 from twython import Twython
 import config
 from MyTwythonStreamer import MyTwythonStreamer
@@ -12,7 +13,7 @@ def getAuthTokens():
 
     # get auth pin
     print 'auth url: ' + firstAuth['auth_url']
-    authPin = raw_input('pin: ')
+    authPin = getpass('pin: ')
 
     # get second auth
     twitter = Twython(
