@@ -75,4 +75,7 @@ if __name__ == '__main__':
     if track == '':
         track = 'party'
 
-    stream.statuses.filter(track=track)
+    try:
+        stream.statuses.filter(track=track)
+    except KeyboardInterrupt:
+        print "[KeyboardInterrupt] Stream stopped by user"
