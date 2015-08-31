@@ -7,7 +7,12 @@ import config
 class MyTwythonStreamer(TwythonStreamer):
 
     def on_error(self, status_code, data):
-        print status_code, data
+        # show log info
+        log_datetime = datetime.datetime.today()
+        log_message = status_code + data
+        logline = '[' + str(log_datetime) + '] ' + log_message
+        print logline
+        print logline
 
     def on_success(self, data):
         if 'text' in data:
