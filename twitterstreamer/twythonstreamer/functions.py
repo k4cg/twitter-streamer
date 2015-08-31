@@ -1,7 +1,7 @@
 from getpass import getpass
 from twython import Twython
 import config
-from MyTwythonStreamer import MyTwythonStreamer
+from mytwythonstreamer import MyTwythonStreamer
 
 
 def getAuthTokens():
