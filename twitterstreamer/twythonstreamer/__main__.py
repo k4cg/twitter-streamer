@@ -15,6 +15,7 @@ if __name__ == '__main__':
         track = 'party'
 
     try:
+        print "Stream opened. Waiting for tweets..."
         stream.statuses.filter(track=track)
     except KeyboardInterrupt:
         print "[KeyboardInterrupt] Stream stopped by user"
