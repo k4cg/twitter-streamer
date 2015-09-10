@@ -33,33 +33,22 @@ By default, the tracked tweets will be save on file _.tracked_tweets.txt_. If yo
 
 ### Usage
 
-You can use twitterstreamer from the console (_CLI_) or as a _package_ in your own python project.
+You can use twitterstreamer as a command (_CLI_) or as a _package_ in your own python project.
 
 **cli**
 
-Run python on interactive mode:
+Execute this command to get more information:
 
 ```
-$ python
-Python 2.7.6 (default, Jun 22 2015, 17:58:13) 
-[GCC 4.8.2] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>>
+$ python twitterstreamer/twythonstreamer/ -h
 ```
 
-and then
-
-```python
->>> import twitterstreamer
->>> twitterstreamer.getAuthTokens() # You should execute this only the first time or when your tokens are expired.
->>> stream = twitterstreamer.getStream() # get a twython streamer, which is not started yet.
->>> stream.statuses.filter(track='text to search') # open and start a stream. It is a blocking command.
-```
-
-If you already have the auth tokens, you can execute the package in an interactive mode.
+If you have not the auth tokens yet, you should use the -T parameter, or the iteractive mode.  
+You could obtain the tokens from the twitter web apps and write them in the config file manually.
 
 ```
-$ python twitterstreamer/__init__.py
+$ python twitterstreamer/twythonstreamer/ -T -t sunset # Get new tokens proccess and search for "sunset" in tweets.
+$ python twitterstreamer/twythonstreamer/ -i # You will be asked for needed parameters.
 ```
 
 
