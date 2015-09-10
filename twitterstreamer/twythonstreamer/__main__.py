@@ -18,7 +18,7 @@ def getParsedArguments():
 
     argumentParser.add_argument(
         '-t', '--track',
-        type=str, default='party', nargs='+',
+        type=str, default=['party'], nargs='+',
         help='Show tweets that contain this text.', metavar='text')
 
     args = argumentParser.parse_args()
