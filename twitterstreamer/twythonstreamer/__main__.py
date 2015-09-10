@@ -29,6 +29,8 @@ if __name__ == '__main__':
     args = getParsedArguments()
     args.track = ' '.join(args.track)
 
+    getAuthTokensFromConfigFile()
+
     if args.interactive_mode:
         # get new tokens?
         getNewTokens = raw_input('Get new tokens? [Y/n]: ')

@@ -33,6 +33,20 @@ def getAuthTokens():
     return secondAuth
 
 
+def getAuthTokensFromConfigFile():
+    ok = False
+
+    if config.TOKEN and config.TOKEN_SECRET:
+        f_authTokens = open(config.FILE_TMP_TOKENS, 'w')
+        lines = 'oauth_token' + '\t' + config.TOKEN + '\n'
+        lines += 'oauth_token_secret' + '\t' + config.TOKEN_SECRET + '\n'
+        f_authTokens.write(lines)
+        f_authTokens.close()
+        ok = True
+
+    return ok
+
+
 def getStream():
     # Get auth tokens
     f_authTokens = open(config.FILE_TMP_TOKENS, 'r')
