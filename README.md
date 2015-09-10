@@ -44,7 +44,7 @@ $ python twitterstreamer/twythonstreamer/ -h
 ```
 
 If you have not the auth tokens yet, you should use the -T parameter, or the iteractive mode.  
-You could obtain the tokens from the twitter web apps and write them in the config file manually.
+You could obtain the tokens from the twitter apps web page and write them on the config file manually.
 
 ```
 $ python twitterstreamer/twythonstreamer/ -T -t sunset # Get new tokens proccess and search for "sunset" in tweets.
