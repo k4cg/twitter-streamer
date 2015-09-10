@@ -16,15 +16,25 @@ class MyTwythonStreamer(TwythonStreamer):
 
     def on_success(self, data):
         if 'text' in data:
-            # get json object notation string
-            json_string_data = json.dumps(data)
+            # get saved tweets
+            try:
+                f_trackedTweets = open(config.FILE_TRACKED_TWEETS, 'r')
+                json_string_tweets = f_trackedTweets.read()
+                f_trackedTweets.close()
+                # as a python object array
+                saved_tweets = json.loads(json_string_tweets)
+            except IOError:
+                saved_tweets = []
 
-            # line to save into a file
-            line = json_string_data + '\n'
+            # add the incoming tweet
+            saved_tweets.append(data)
+
+            # get json object notation string
+            json_string_tweets = json.dumps(saved_tweets)
 
             # save to a file
-            f_trackedTweets = open(config.FILE_TRACKED_TWEETS, 'a')
-            f_trackedTweets.write(line)
+            f_trackedTweets = open(config.FILE_TRACKED_TWEETS, 'w')
+            f_trackedTweets.write(json_string_tweets)
             f_trackedTweets.close()
 
             # show log info
